@@ -1,8 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿
+using Microsoft.AspNetCore.Mvc;
 
 namespace MVCTutorial.Controllers
 {
-    public class MoviesController : Controller
+    public class MovieController : Controller
     {
         public IActionResult Index()
         {

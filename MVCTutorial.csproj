@@ -6,4 +6,15 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="Views\Movies\**" />
+    <Content Remove="Views\Movies\**" />
+    <EmbeddedResource Remove="Views\Movies\**" />
+    <None Remove="Views\Movies\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Controllers\MoviesController.cs" />
+  </ItemGroup>
+
 </Project>
