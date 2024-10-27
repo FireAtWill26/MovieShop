@@ -1,0 +1,11 @@
+﻿@model Movie
+
+<div class="card border-0" style="width: 10rem;">
+    <a asp-action="Detail" asp-controller="Movie" asp-route-id="@Model.Id">
+        <img src="@Model.PosterUrl" class="card-img-top img-thumbnail" alt="@Model.PosterUrl">
+    </a>
+    <div class="card-body">
+        <h5 class="card-title fs-5">@Model.Title</h5>
+        <p class="card-text fs-6">@Model.ReleaseDate.ToString("yyyy-MM-dd")</p>
+    </div>
+</div>
