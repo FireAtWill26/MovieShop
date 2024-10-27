@@ -22,11 +22,7 @@ namespace Infrastructure.Repository
 
         public Movie GetMoviebyId(int movieId)
         {
-            foreach(Movie movie in GetMoviesWithGenreAndCast())
-            {
-                if(movie.Id == movieId) return movie;
-            }
-            return null;
+            return GetMoviesWithGenreAndCast().FirstOrDefault(x => x.Id == movieId);
         }
 
         public string GetMovieDetails(int movieId)
@@ -44,9 +40,7 @@ namespace Infrastructure.Repository
 
         public IEnumerable<Movie> GetMostRecentMovies(int number = 20)
         {
-            return _context.Movies.OrderByDescending(x => x.ReleaseDate).Take(number).
-                Include(x => x.MovieGenres).ThenInclude(mg => mg.Genre).
-                Include(x => x.MovieCasts).ThenInclude(mc => mc.Cast).ToList(); ;
+            return GetAll().OrderByDescending(x => x.ReleaseDate).Take(number).ToList(); ;
         }
 
     }

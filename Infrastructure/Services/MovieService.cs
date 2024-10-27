@@ -6,37 +6,37 @@ namespace Infrastructure.Services
 {
     public class MovieService: IMovieService
     {
-        private IGenreRepository _repository;
-        public MovieService(IGenreRepository repo)
+        private IMovieRepository _repository;
+        public MovieService(IMovieRepository repo)
         {
             _repository = repo;
         }
 
-        public int AddGenre(Genre genre)
+        public int AddMovie(Movie movie)
         {
-            return _repository.Insert(genre);
+            return _repository.Insert(movie);
         }
 
-        public int DeleteGenre(int id)
+        public int DeleteMovie(int id)
         {
             return _repository.Delete(id);
         }
 
-        public IEnumerable<Genre> GetAllGenre()
+        public IEnumerable<Movie> GetAllMovie()
         {
             return _repository.GetAll();
         }
 
-        public Genre GetGenreById(int id)
+        public Movie GetMovieById(int id)
         {
             return _repository.GetById(id);
         }
 
-        public int UpdateGenre(Genre genre, int id)
+        public int UpdateMovie(Movie movie, int id)
         {
-            if (genre.Id == id)
+            if (movie.Id == id)
             {
-                return _repository.Update(genre);
+                return _repository.Update(movie);
             }
             return 0;
         }

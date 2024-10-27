@@ -22,14 +22,7 @@ namespace Infrastructure.Repository
 
         public Cast GetById(int Id)
         {
-            foreach(Cast cast in GetCastsWithMovie())
-            {
-                if(cast.Id == Id)
-                {
-                    return cast;
-                }
-            }
-            return null;
+            return GetCastsWithMovie().FirstOrDefault(x => x.Id == Id);
         }
 
 
