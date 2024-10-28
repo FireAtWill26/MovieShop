@@ -29,7 +29,7 @@ namespace Infrastructure.Services
 
         public Movie GetMovieById(int id)
         {
-            return _repository.GetById(id);
+            return _repository.GetMoviebyId(id);
         }
 
         public int UpdateMovie(Movie movie, int id)
@@ -39,6 +39,11 @@ namespace Infrastructure.Services
                 return _repository.Update(movie);
             }
             return 0;
+        }
+
+        public IEnumerable<Movie> GetMoviesWithGenreAndCast()
+        {
+            return _repository.GetMoviesWithGenreAndCast();
         }
     }
 }

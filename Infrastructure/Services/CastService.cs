@@ -1,6 +1,7 @@
 ﻿using ApplicationCore.Contracts.Repository;
 using ApplicationCore.Contracts.Services;
 using ApplicationCore.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Services
 {
@@ -39,6 +40,10 @@ namespace Infrastructure.Services
                 return _repository.Update(cast);
             }
             return 0;
+        }
+        public IEnumerable<Cast> GetCastsWithMovie()
+        {
+            return _repository.GetCastsWithMovie();
         }
     }
 }

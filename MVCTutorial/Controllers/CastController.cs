@@ -1,4 +1,4 @@
-﻿using ApplicationCore.Contracts.Repository;
+﻿using ApplicationCore.Contracts.Services;
 using ApplicationCore.Entities;
 using Microsoft.AspNetCore.Mvc;
 
@@ -6,22 +6,23 @@ namespace MVCTutorial.Controllers
 {
     public class CastController : Controller
     {
-        private readonly ICastRepository _castRepository;
+        private readonly ICastService _castService;
 
-        public CastController(ICastRepository castRepository)
+        public CastController(ICastService castService)
         {
-            _castRepository = castRepository;
+            _castService = castService;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(int page = 1)
         {
-            var casts = _castRepository.GetAll();
-            return View(casts.Take(66).ToList());
+            ViewData["Page"] = page;
+            var casts = _castService.GetAllCast();
+            return View(casts.Skip(((int)ViewData["Page"]-1)*66).Take(66).ToList());
         }
 
         public IActionResult Detail(int Id)
         {
-            Cast cast = _castRepository.GetById(Id);
+            Cast cast = _castService.GetCastById(Id);
             return View(cast);
         }
     }

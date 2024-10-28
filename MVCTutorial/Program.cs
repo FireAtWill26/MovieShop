@@ -18,7 +18,10 @@ builder.Services.AddDbContext<MovieShopAppDbContext>(option =>
 builder.Services.AddScoped<ICastRepository, CastRepository>();
 builder.Services.AddScoped<IGenreRepository, GenreRepository>();
 builder.Services.AddScoped<IMovieRepository, MovieRepository>();
+builder.Services.AddScoped<IMovieService, MovieService>();
 builder.Services.AddScoped<IGenreService, GenreService>();
+builder.Services.AddScoped<ICastService, CastService>();
+
 
 var app = builder.Build();
 

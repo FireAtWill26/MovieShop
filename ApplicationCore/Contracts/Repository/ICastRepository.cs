@@ -4,5 +4,6 @@ namespace ApplicationCore.Contracts.Repository
 {
     public interface ICastRepository : IRepository<Cast>
     {
+        IEnumerable<Cast> GetCastsWithMovie();
     }
 }

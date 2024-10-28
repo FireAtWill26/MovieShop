@@ -5,7 +5,31 @@
 @{
 }
 
+
 <div class="container ">
+    <div class="row">
+        <div class="col">
+            <div class="dropdown">
+                <a class ="btn dropdown-toggle" href="#" role="button" id="SortingMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                    Sorting By
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="SortingMenuLink">
+                    <li>
+                        <a class="dropdown-item" asp-action="Index" asp-controller="Movie" asp-route-sort="Id" asp-route-page=1>
+                            Id                            
+                        </a>
+                        
+                    </li>
+                    <li>
+                        <a class="dropdown-item" asp-action="Index" asp-controller="Movie" asp-route-sort="Release_Date" asp-route-page=1>
+                            Release Date
+                        </a>
+                        
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
     <div class="row row-cols-auto">
         @foreach(Movie item in Model)
         {
@@ -13,5 +37,44 @@
                 <partial name="_MovieCard" model=@item />
             </div>
         }
+    </div>
+    <div class="row">
+        <nav aria-label="Movie_Index_Page">
+            <ul class="pagination justify-content-center">
+                @if ((int)ViewData["page"] != 1){
+                    <li class="page-item">
+                        <a class="page-link" asp-action="Index" asp-controller="Movie"
+                           asp-route-page=@((int)ViewData["page"] - 1)
+                           asp-route-sort="@((string)ViewData["sort"])">Previous</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" asp-action="Index" asp-controller="Movie"
+                           asp-route-page=@((int)ViewData["page"] - 1)
+                           asp-route-sort="@((string)ViewData["sort"])">@((int)ViewData["page"] - 1)</a>
+                    </li>
+
+                }
+                <li class="page-item active">
+                    <a class="page-link" asp-action="Index" asp-controller="Movie"
+                    asp-route-page=@((int)ViewData["page"])
+                    asp-route-sort="@((string)ViewData["sort"])">@((int)ViewData["page"])</a></li>
+                <li class="page-item">
+                    <a class="page-link" asp-action="Index" asp-controller="Movie"
+                    asp-route-page=@((int)ViewData["page"] + 1)
+                    asp-route-sort="@((string)ViewData["sort"])">@((int)ViewData["page"] + 1)</a>
+                </li>
+                @if ((int)ViewData["page"]==1)
+                {
+                    <li class="page-item">
+                        <a class="page-link" asp-action="Index" asp-controller="Movie"
+                        asp-route-page=@((int)ViewData["page"] + 2)
+                        asp-route-sort="@((string)ViewData["sort"])">@((int)ViewData["page"] + 2)</a>
+                    </li>
+                }
+                <li class="page-item">
+                    <a class="page-link" asp-action="Index" asp-controller="Movie" asp-route-page=@((int)ViewData["page"] + 1) asp-route-sort="@((string)ViewData["sort"])">Next</a>
+                </li>
+            </ul>
+        </nav>
     </div>
 </div>
