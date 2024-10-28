@@ -34,7 +34,7 @@
         @foreach(Movie item in Model)
         {
             <div class="col">
-                <partial name="_MovieCard" model=@item />
+                <partial name="_MovieIndexCard" model=@item />
             </div>
         }
     </div>
@@ -47,6 +47,14 @@
                            asp-route-page=@((int)ViewData["page"] - 1)
                            asp-route-sort="@((string)ViewData["sort"])">Previous</a>
                     </li>
+                    @if ((int)ViewData["page"] != 2)
+                    {
+                        <li class="page-item">
+                            <a class="page-link" asp-action="Index" asp-controller="Movie"
+                               asp-route-page=@((int)ViewData["page"] - 2)
+                               asp-route-sort="@((string)ViewData["sort"])">@((int)ViewData["page"] - 2)</a>
+                        </li>
+                    }
                     <li class="page-item">
                         <a class="page-link" asp-action="Index" asp-controller="Movie"
                            asp-route-page=@((int)ViewData["page"] - 1)
@@ -63,13 +71,26 @@
                     asp-route-page=@((int)ViewData["page"] + 1)
                     asp-route-sort="@((string)ViewData["sort"])">@((int)ViewData["page"] + 1)</a>
                 </li>
-                @if ((int)ViewData["page"]==1)
+                <li class="page-item">
+                    <a class="page-link" asp-action="Index" asp-controller="Movie"
+                       asp-route-page=@((int)ViewData["page"] + 2)
+                       asp-route-sort="@((string)ViewData["sort"])">@((int)ViewData["page"] + 2)</a>
+                </li>
+                @if ((int)ViewData["page"] <= 2)
                 {
                     <li class="page-item">
                         <a class="page-link" asp-action="Index" asp-controller="Movie"
-                        asp-route-page=@((int)ViewData["page"] + 2)
-                        asp-route-sort="@((string)ViewData["sort"])">@((int)ViewData["page"] + 2)</a>
+                        asp-route-page=@((int)ViewData["page"] + 3)
+                        asp-route-sort="@((string)ViewData["sort"])">@((int)ViewData["page"] + 3)</a>
                     </li>
+                    @if ((int)ViewData["page"] == 1)
+                    {
+                        <li class="page-item">
+                            <a class="page-link" asp-action="Index" asp-controller="Movie"
+                               asp-route-page=@((int)ViewData["page"] + 4)
+                               asp-route-sort="@((string)ViewData["sort"])">@((int)ViewData["page"] + 4)</a>
+                        </li>
+                    }
                 }
                 <li class="page-item">
                     <a class="page-link" asp-action="Index" asp-controller="Movie" asp-route-page=@((int)ViewData["page"] + 1) asp-route-sort="@((string)ViewData["sort"])">Next</a>

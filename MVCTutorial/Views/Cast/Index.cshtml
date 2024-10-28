@@ -13,18 +13,24 @@
             </div>
         }
     </div>
-    <br />
     <div class="row">
         <nav aria-label="Cast_Index_Page">
             <ul class="pagination justify-content-center">
                 @if ((int)ViewData["page"] != 1)
                 {
                     <li class="page-item">
-                        <a class="page-link" asp-action="Index" asp-controller="Cast"
+                        <a class="page-link" asp-action="Index" asp-controller="Movie"
                            asp-route-page=@((int)ViewData["page"] - 1)>Previous</a>
                     </li>
+                    @if ((int)ViewData["page"] != 2)
+                    {
+                        <li class="page-item">
+                            <a class="page-link" asp-action="Index" asp-controller="Movie"
+                               asp-route-page=@((int)ViewData["page"] - 2)>@((int)ViewData["page"] - 2)</a>
+                        </li>
+                    }
                     <li class="page-item">
-                        <a class="page-link" asp-action="Index" asp-controller="Cast"
+                        <a class="page-link" asp-action="Index" asp-controller="Movie"
                            asp-route-page=@((int)ViewData["page"] - 1)>@((int)ViewData["page"] - 1)</a>
                     </li>
 
@@ -37,12 +43,23 @@
                     <a class="page-link" asp-action="Index" asp-controller="Cast"
                        asp-route-page=@((int)ViewData["page"] + 1)>@((int)ViewData["page"] + 1)</a>
                 </li>
-                @if ((int)ViewData["page"] == 1)
+                <li class="page-item">
+                    <a class="page-link" asp-action="Index" asp-controller="Cast"
+                       asp-route-page=@((int)ViewData["page"] + 2)>@((int)ViewData["page"] + 2)</a>
+                </li>
+                @if ((int)ViewData["page"] <= 2)
                 {
                     <li class="page-item">
-                        <a class="page-link" asp-action="Index" asp-controller="Cast"
-                           asp-route-page=@((int)ViewData["page"] + 2)>@((int)ViewData["page"] + 2)</a>
+                        <a class="page-link" asp-action="Index" asp-controller="Movie"
+                           asp-route-page=@((int)ViewData["page"] + 3)>@((int)ViewData["page"] + 3)</a>
                     </li>
+                    @if ((int)ViewData["page"] == 1)
+                    {
+                        <li class="page-item">
+                            <a class="page-link" asp-action="Index" asp-controller="Movie"
+                               asp-route-page=@((int)ViewData["page"] + 4)>@((int)ViewData["page"] + 4)</a>
+                        </li>
+                    }
                 }
                 <li class="page-item">
                     <a class="page-link" asp-action="Index" asp-controller="Cast" asp-route-page=@((int)ViewData["page"] + 1))>Next</a>
