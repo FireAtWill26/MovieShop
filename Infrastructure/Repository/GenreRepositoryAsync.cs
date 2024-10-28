@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace Infrastructure.Repository
 {
-    public class GenreRepository : BaseRepository<Genre>, IGenreRepository
+    public class GenreRepositoryAsync : BaseRepositoryAsync<Genre>, IGenreRepositoryAsync
     {
-        public GenreRepository(MovieShopAppDbContext c) : base(c)
+        public GenreRepositoryAsync(MovieShopAppDbContext c) : base(c)
         {
         }
     }

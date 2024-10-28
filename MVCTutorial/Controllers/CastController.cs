@@ -6,23 +6,23 @@ namespace MVCTutorial.Controllers
 {
     public class CastController : Controller
     {
-        private readonly ICastService _castService;
+        private readonly ICastServiceAsync _castService;
 
-        public CastController(ICastService castService)
+        public CastController(ICastServiceAsync castService)
         {
             _castService = castService;
         }
 
-        public IActionResult Index(int page = 1)
+        public async Task<IActionResult> Index(int page = 1)
         {
             ViewData["Page"] = page;
-            var casts = _castService.GetAllCast();
-            return View(casts.Skip(((int)ViewData["Page"]-1)*66).Take(66).ToList());
+            var casts = await _castService.GetAllCast(page, 66);
+            return View(casts);
         }
 
-        public IActionResult Detail(int Id)
+        public async Task<IActionResult> Detail(int Id)
         {
-            Cast cast = _castService.GetCastById(Id);
+            var cast = await _castService.GetCastById(Id);
             return View(cast);
         }
     }

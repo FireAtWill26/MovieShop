@@ -1,6 +1,6 @@
 ﻿namespace ApplicationCore.Contracts.Services
 {
-    public interface IUserService
+    public interface IAccountServiceAsync
     {
     }
 }

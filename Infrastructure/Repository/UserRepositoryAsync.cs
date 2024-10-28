@@ -5,9 +5,9 @@ using System.Linq.Expressions;
 
 namespace Infrastructure.Repository
 {
-    public class UserRepository : BaseRepository<User>, IUserRepository
+    public class UserRepositoryAsync : BaseRepositoryAsync<User>, IUserRepositoryAsync
     {
-        public UserRepository(MovieShopAppDbContext c) : base(c)
+        public UserRepositoryAsync(MovieShopAppDbContext c) : base(c)
         {
         }
     }

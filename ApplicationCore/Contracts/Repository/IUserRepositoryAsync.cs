@@ -2,7 +2,7 @@
 
 namespace ApplicationCore.Contracts.Repository
 {
-    public interface IRoleRepository : IRepository<Role>
+    public interface IUserRepositoryAsync : IRepositoryAsync<User>
     {
     }
 }

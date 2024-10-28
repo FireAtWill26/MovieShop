@@ -2,7 +2,7 @@
 
 namespace Infrastructure.Services
 {
-    public class AccountService: IAccountService
+    public class AccountServiceAsync: IAccountServiceAsync
     {
     }
 }

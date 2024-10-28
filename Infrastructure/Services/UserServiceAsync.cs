@@ -2,7 +2,7 @@
 
 namespace Infrastructure.Services
 {
-    public class AdminService: IAdminService
+    public class UserServiceAsync: IUserServiceAsync
     {
     }
 }

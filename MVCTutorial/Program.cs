@@ -15,12 +15,12 @@ builder.Services.AddDbContext<MovieShopAppDbContext>(option =>
         option.UseSqlServer(builder.Configuration.GetConnectionString("MovieShop"));
     });
 
-builder.Services.AddScoped<ICastRepository, CastRepository>();
-builder.Services.AddScoped<IGenreRepository, GenreRepository>();
-builder.Services.AddScoped<IMovieRepository, MovieRepository>();
-builder.Services.AddScoped<IMovieService, MovieService>();
-builder.Services.AddScoped<IGenreService, GenreService>();
-builder.Services.AddScoped<ICastService, CastService>();
+builder.Services.AddScoped<ICastRepositoryAsync, CastRepositoryAsync>();
+builder.Services.AddScoped<IGenreRepositoryAsync, GenreRepositoryAsync>();
+builder.Services.AddScoped<IMovieRepositoryAsync, MovieRepositoryAsync>();
+builder.Services.AddScoped<IMovieServiceAsync, MovieServiceAsync>();
+builder.Services.AddScoped<IGenreServiceAsnyc, GenreServiceAsync>();
+builder.Services.AddScoped<ICastServiceAsync, CastServiceAsync>();
 
 
 var app = builder.Build();

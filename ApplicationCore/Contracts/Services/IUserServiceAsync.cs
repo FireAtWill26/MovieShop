@@ -1,6 +1,6 @@
 ﻿namespace ApplicationCore.Contracts.Services
 {
-    public interface IAdminService
+    public interface IUserServiceAsync
     {
     }
 }

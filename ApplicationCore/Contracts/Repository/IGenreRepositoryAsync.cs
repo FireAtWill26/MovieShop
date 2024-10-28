@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ApplicationCore.Contracts.Repository
 {
-    public interface IGenreRepository: IRepository<Genre>
+    public interface IGenreRepositoryAsync: IRepositoryAsync<Genre>
     {
     }
 }

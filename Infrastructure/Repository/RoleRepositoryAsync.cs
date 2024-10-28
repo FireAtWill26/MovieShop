@@ -4,9 +4,9 @@ using Infrastructure.Data;
 
 namespace Infrastructure.Repository
 {
-    public class RoleRepository : BaseRepository<Role>, IRoleRepository
+    public class RoleRepositoryAsync : BaseRepositoryAsync<Role>, IRoleRepositoryAsync
     {
-        public RoleRepository(MovieShopAppDbContext c) : base(c)
+        public RoleRepositoryAsync(MovieShopAppDbContext c) : base(c)
         {
         }
     }

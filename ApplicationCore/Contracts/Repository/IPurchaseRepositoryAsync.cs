@@ -2,7 +2,7 @@
 
 namespace ApplicationCore.Contracts.Repository
 {
-    public interface IPurchaseRepository : IRepository<Purchase>
+    public interface IPurchaseRepositoryAsync : IRepositoryAsync<Purchase>
     {
     }
 }
