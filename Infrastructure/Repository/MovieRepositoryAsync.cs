@@ -69,5 +69,18 @@ namespace Infrastructure.Repository
             return await _context.Movies.OrderByDescending(x => x.ReleaseDate).Take(number).ToListAsync(); ;
         }
 
+        public async Task<IEnumerable<Movie>> GetMoviesByGenre(int genreId)
+        {
+            var genre = await _context.Genres.
+                Include(x => x.MovieGenres).ThenInclude(mg => mg.Movie).
+                FirstOrDefaultAsync(x => x.Id == genreId);
+            List<Movie> res = new();
+            foreach (MovieGenre movieGenre in genre.MovieGenres)
+            {
+                res.Add(movieGenre.Movie);
+            }
+            return res;
+        }
+
     }
 }

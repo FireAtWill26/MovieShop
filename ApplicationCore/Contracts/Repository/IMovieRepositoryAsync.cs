@@ -14,5 +14,7 @@ namespace ApplicationCore.Contracts.Repository
         Task<IEnumerable<Movie>> GetMostRecentMovies(int number = 20);
 
         Task<IEnumerable<Movie>> GetAllMovie(string sort, int page, int count);
+
+        Task<IEnumerable<Movie>> GetMoviesByGenre(int genreId);
     }
 }

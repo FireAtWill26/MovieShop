@@ -1,0 +1,72 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model IEnumerable<Movie>
+
+<div class="container">
+   @*  <partial name="MoviesByGenre"/> *@
+    <div class="row row-cols-auto">
+        @foreach (Movie item in Model)
+        {
+            <div class="col">
+                <partial name="_MovieIndexCard" model=@item />
+            </div>
+        }
+    </div>
+    <div class="row">
+        <nav aria-label="Movie_MoviesByGenre_Page">
+            <ul class="pagination justify-content-center">
+                @if ((int)ViewData["pageNumber"] != 1)
+                {
+                    <li class="page-item">
+                        <a class="page-link" asp-action="MoviesByGenre" asp-controller="Movie"
+                           asp-route-pageNumber=@((int)ViewData["pageNumber"] - 1)>Previous</a>
+                    </li>
+                    @if ((int)ViewData["pageNumber"] != 2)
+                    {
+                        <li class="page-item">
+                            <a class="page-link" asp-action="MoviesByGenre" asp-controller="Movie"
+                               asp-route-pageNumber=@((int)ViewData["pageNumber"] - 2)>@((int)ViewData["pageNumber"] - 2)</a>
+                        </li>
+                    }
+                    <li class="page-item">
+                        <a class="page-link" asp-action="MoviesByGenre" asp-controller="Movie"
+                           asp-route-pageNumber=@((int)ViewData["pageNumber"] - 1)>@((int)ViewData["pageNumber"] - 1)</a>
+                    </li>
+
+                }
+                <li class="page-item active">
+                    <a class="page-link" asp-action="MoviesByGenre" asp-controller="Movie"
+                       asp-route-pageNumber=@((int)ViewData["pageNumber"])>@((int)ViewData["pageNumber"])</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" asp-action="MoviesByGenre" asp-controller="Movie"
+                       asp-route-pageNumber=@((int)ViewData["pageNumber"] + 1)>@((int)ViewData["pageNumber"] + 1)</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" asp-action="MoviesByGenre" asp-controller="Movie"
+                       asp-route-pageNumber=@((int)ViewData["pageNumber"] + 2)>@((int)ViewData["pageNumber"] + 2)</a>
+                </li>
+                @if ((int)ViewData["pageNumber"] <= 2)
+                {
+                    <li class="page-item">
+                        <a class="page-link" asp-action="MoviesByGenre" asp-controller="Movie"
+                           asp-route-pageNumber=@((int)ViewData["pageNumber"] + 3)>@((int)ViewData["pageNumber"] + 3)</a>
+                    </li>
+                    @if ((int)ViewData["pageNumber"] == 1)
+                    {
+                        <li class="page-item">
+                            <a class="page-link" asp-action="MoviesByGenre" asp-controller="Movie"
+                               asp-route-pageNumber=@((int)ViewData["pageNumber"] + 4)>@((int)ViewData["pageNumber"] + 4)</a>
+                        </li>
+                    }
+                }
+                <li class="page-item">
+                    <a class="page-link" asp-action="MoviesByGenre" asp-controller="Movie" asp-route-pageNumber=@((int)ViewData["pageNumber"] + 1))>Next</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>

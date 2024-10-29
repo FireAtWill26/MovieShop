@@ -9,18 +9,20 @@ namespace MVCTutorial.Controllers
     public class MovieController : Controller
     {
         private readonly IMovieServiceAsync _movieService;
+        private readonly IGenreServiceAsync _genreService;
 
-        public MovieController(IMovieServiceAsync movieService)
+        public MovieController(IMovieServiceAsync movieService, IGenreServiceAsync genreService)
         {
             _movieService = movieService;
+            _genreService = genreService;
         }
 
         public async Task<IActionResult> Index(string sort="Id", int page=1)
         {
             ViewData["sort"] = sort;
             ViewData["page"] = page;
-            object result;
-            result = await _movieService.GetAllMovie(sort, page, 64);
+            ViewBag.Genre = await _genreService.GetAllGenre();
+            var result = await _movieService.GetAllMovie(sort, page, 64);
             return View(result);
         }
 
@@ -28,6 +30,14 @@ namespace MVCTutorial.Controllers
         {
             Movie movie = await _movieService.GetMovieById(id);
             return View(movie);
+        }
+
+        public async Task<IActionResult> MoviesByGenre(int id, int pageSize = 50, int pageNumber = 1)
+        {
+            ViewData["id"] = id;
+            ViewData["pageNumber"] = pageNumber;
+            IEnumerable<Movie> movies = await _movieService.GetMoviesByGenre(id, pageSize, pageNumber);
+            return View(movies);
         }
     }
 }

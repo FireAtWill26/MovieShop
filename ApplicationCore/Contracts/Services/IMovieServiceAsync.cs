@@ -16,5 +16,7 @@ namespace ApplicationCore.Contracts.Services
         Task<int> UpdateMovie(Movie movie, int id);
 
         Task<IEnumerable<Movie>> GetMovieDetails(string sort, int page, int count);
+
+        Task<IEnumerable<Movie>> GetMoviesByGenre(int genreId, int pageSize, int pageNumber);
     }
 }

@@ -19,18 +19,18 @@
                 @if ((int)ViewData["page"] != 1)
                 {
                     <li class="page-item">
-                        <a class="page-link" asp-action="Index" asp-controller="Movie"
+                        <a class="page-link" asp-action="Index" asp-controller="Cast"
                            asp-route-page=@((int)ViewData["page"] - 1)>Previous</a>
                     </li>
                     @if ((int)ViewData["page"] != 2)
                     {
                         <li class="page-item">
-                            <a class="page-link" asp-action="Index" asp-controller="Movie"
+                            <a class="page-link" asp-action="Index" asp-controller="Cast"
                                asp-route-page=@((int)ViewData["page"] - 2)>@((int)ViewData["page"] - 2)</a>
                         </li>
                     }
                     <li class="page-item">
-                        <a class="page-link" asp-action="Index" asp-controller="Movie"
+                        <a class="page-link" asp-action="Index" asp-controller="Cast"
                            asp-route-page=@((int)ViewData["page"] - 1)>@((int)ViewData["page"] - 1)</a>
                     </li>
 
@@ -50,13 +50,13 @@
                 @if ((int)ViewData["page"] <= 2)
                 {
                     <li class="page-item">
-                        <a class="page-link" asp-action="Index" asp-controller="Movie"
+                        <a class="page-link" asp-action="Index" asp-controller="Cast"
                            asp-route-page=@((int)ViewData["page"] + 3)>@((int)ViewData["page"] + 3)</a>
                     </li>
                     @if ((int)ViewData["page"] == 1)
                     {
                         <li class="page-item">
-                            <a class="page-link" asp-action="Index" asp-controller="Movie"
+                            <a class="page-link" asp-action="Index" asp-controller="Cast"
                                asp-route-page=@((int)ViewData["page"] + 4)>@((int)ViewData["page"] + 4)</a>
                         </li>
                     }

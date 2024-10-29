@@ -4,7 +4,7 @@ using ApplicationCore.Entities;
 
 namespace Infrastructure.Services
 {
-    public class GenreServiceAsync : IGenreServiceAsnyc
+    public class GenreServiceAsync : IGenreServiceAsync
     {
         private IGenreRepositoryAsync _repository;
         public GenreServiceAsync(IGenreRepositoryAsync repo)

@@ -19,7 +19,7 @@ builder.Services.AddScoped<ICastRepositoryAsync, CastRepositoryAsync>();
 builder.Services.AddScoped<IGenreRepositoryAsync, GenreRepositoryAsync>();
 builder.Services.AddScoped<IMovieRepositoryAsync, MovieRepositoryAsync>();
 builder.Services.AddScoped<IMovieServiceAsync, MovieServiceAsync>();
-builder.Services.AddScoped<IGenreServiceAsnyc, GenreServiceAsync>();
+builder.Services.AddScoped<IGenreServiceAsync, GenreServiceAsync>();
 builder.Services.AddScoped<ICastServiceAsync, CastServiceAsync>();
 
 

@@ -3,7 +3,7 @@ using ApplicationCore.Entities;
 
 namespace ApplicationCore.Contracts.Services
 {
-    public interface IGenreServiceAsnyc
+    public interface IGenreServiceAsync
     {
         Task<int> AddGenre(Genre genre);
         Task<int> UpdateGenre(Genre genre, int id);

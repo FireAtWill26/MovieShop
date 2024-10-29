@@ -45,5 +45,12 @@ namespace Infrastructure.Services
         {
             return await _repository.GetMovieDetails(sort, page, count);
         }
+
+        public async Task<IEnumerable<Movie>> GetMoviesByGenre(int genreId, int pageSize, int pageNumber)
+        {
+            var res = await _repository.GetMoviesByGenre(genreId);
+            return res.Skip((pageNumber-1)*pageSize).Take(pageSize);
+
+        }
     }
 }
