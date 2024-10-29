@@ -30,7 +30,7 @@
     <hr />
     <p class="fs-4">Movies @Model.Name acted in</p>
     <div class="row row-cols-auto">
-        @foreach(MovieCast movieCast in Model.MovieCasts)
+        @foreach(MovieCast movieCast in Model.MovieCasts.OrderByDescending(x=>x.Movie.ReleaseDate))
         {
             <div class="col">
                 <partial name="_MovieDetailCard" model="@movieCast.Movie"/>
