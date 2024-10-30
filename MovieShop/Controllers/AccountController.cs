@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace MVCTutorial.Controllers
+namespace MovieShop.Controllers
 {
-    public class AdminController : Controller
+    public class AccountController : Controller
     {
         public IActionResult Index()
         {

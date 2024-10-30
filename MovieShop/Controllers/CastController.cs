@@ -2,7 +2,7 @@
 using ApplicationCore.Entities;
 using Microsoft.AspNetCore.Mvc;
 
-namespace MVCTutorial.Controllers
+namespace MovieShop.Controllers
 {
     public class CastController : Controller
     {

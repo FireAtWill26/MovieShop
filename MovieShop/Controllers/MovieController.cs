@@ -4,7 +4,7 @@ using ApplicationCore.Contracts.Services;
 using ApplicationCore.Entities;
 using Microsoft.AspNetCore.Mvc;
 
-namespace MVCTutorial.Controllers
+namespace MovieShop.Controllers
 {
     public class MovieController : Controller
     {
@@ -36,6 +36,7 @@ namespace MVCTutorial.Controllers
         {
             ViewData["id"] = id;
             ViewData["pageNumber"] = pageNumber;
+            ViewBag.Genre = await _genreService.GetAllGenre();
             IEnumerable<Movie> movies = await _movieService.GetMoviesByGenre(id, pageSize, pageNumber);
             return View(movies);
         }
