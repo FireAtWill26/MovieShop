@@ -3,7 +3,7 @@
 *@
 @{
 }
-<div class="row row-cols-auto ms-1 me-1 mb-0">
+@* <div class="row row-cols-auto ms-1 me-1 mb-0">
     @foreach (Genre genre in ViewBag.Genre)
     {
         if ((int?)ViewData["id"] == genre.Id)
@@ -16,4 +16,21 @@
                 asp-route-id="@genre.Id" asp-route-pageNumber=1>@genre.Name</a>
         }
     }
+
+    
+</div> *@
+
+<div class="dropdown">
+    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="GenreMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+        Genre
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="GenreMenuLink">
+        @foreach (Genre genre in ViewBag.Genre)
+        {
+            <li>
+                <a class="dropdown-item" asp-action="MoviesByGenre" asp-controller="Movie"
+                   asp-route-id="@genre.Id" asp-route-pageNumber=1>@genre.Name</a>
+            </li>
+        }
+    </ul>
 </div>
