@@ -50,13 +50,25 @@ namespace MovieShop.Controllers
             return View(movie);
         }
 
-        public async Task<IActionResult> MoviesByGenre(int id, int pageSize = 50, int pageNumber = 1)
+        public async Task<IActionResult> MoviesByGenre(int id, string sort = "Id", 
+            string order = "asc", int pageSize = 64, int page = 1)
         {
             ViewData["id"] = id;
-            ViewData["pageNumber"] = pageNumber;
+            ViewData["sort"] = sort;
+            ViewData["page"] = page;
+            ViewData["order"] = order;
             ViewBag.Genre = await _genreService.GetAllGenre();
-            IEnumerable<Movie> movies = await _movieService.GetMoviesByGenre(id, pageSize, pageNumber);
-            return View(movies);
+            IEnumerable<Movie> movies = await _movieService.GetMoviesByGenre((int)ViewData["id"]);
+            if (order == "asc")
+            {
+                return View(movies.OrderBy(sortMethod[sort]).
+                    Skip((page - 1) * pageSize).Take(pageSize).ToList());
+            }
+            else
+            {
+                return View(movies.OrderByDescending(sortMethod[sort]).
+                    Skip((page - 1) * pageSize).Take(pageSize).ToList());
+            }
         }
     }
 }

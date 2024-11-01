@@ -19,6 +19,6 @@ namespace ApplicationCore.Contracts.Services
 
         Task<IEnumerable<Movie>> GetMovieDetails(string sort, int page, int count);
 
-        Task<IEnumerable<Movie>> GetMoviesByGenre(int genreId, int pageSize, int pageNumber);
+        Task<IEnumerable<Movie>> GetMoviesByGenre(int genreId);
     }
 }
