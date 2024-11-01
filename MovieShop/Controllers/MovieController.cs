@@ -33,6 +33,7 @@ namespace MovieShop.Controllers
             ViewData["order"] = order;
             ViewBag.Genre = await _genreService.GetAllGenre();
             var result = await _movieService.GetAll();
+            ViewBag.MaxPage = Convert.ToInt32(Math.Ceiling((double)(result.Count() / 64))) + 1;
             if(order == "asc") 
             { 
                 return View(result.OrderBy(sortMethod[sort]).Skip((page - 1) * 64).Take(64).ToList());             
@@ -59,6 +60,7 @@ namespace MovieShop.Controllers
             ViewData["order"] = order;
             ViewBag.Genre = await _genreService.GetAllGenre();
             IEnumerable<Movie> movies = await _movieService.GetMoviesByGenre((int)ViewData["id"]);
+            ViewBag.MaxPage = Convert.ToInt32(Math.Ceiling((double)(movies.Count() / pageSize))) + 1;
             if (order == "asc")
             {
                 return View(movies.OrderBy(sortMethod[sort]).

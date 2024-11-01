@@ -9,23 +9,27 @@
     </a>
     <ul class="dropdown-menu" aria-labelledby="SortingMenuLink">
         <li>
-            <a class="dropdown-item" asp-action=@ViewData["action"] asp-controller="Movie" asp-route-sort="Id" asp-route-page=1>
+            <a class="dropdown-item" asp-action=@ViewData["action"] asp-route-order=@ViewData["order"]
+            asp-controller="Movie" asp-route-sort="Id" asp-route-page=1>
                 Id
             </a>
 
         </li>
         <li>
-            <a class="dropdown-item" asp-action=@ViewData["action"] asp-controller="Movie" asp-route-sort="ReleaseDate" asp-route-page=1>
+            <a class="dropdown-item" asp-action=@ViewData["action"] asp-route-order=@ViewData["order"]
+            asp-controller="Movie" asp-route-sort="ReleaseDate" asp-route-page=1>
                 Release Date
             </a>
         </li>
         <li>
-            <a class="dropdown-item" asp-action=@ViewData["action"] asp-controller="Movie" asp-route-sort="Title" asp-route-page=1>
+            <a class="dropdown-item" asp-action=@ViewData["action"] asp-route-order=@ViewData["order"]
+            asp-controller="Movie" asp-route-sort="Title" asp-route-page=1>
                 Title
             </a>
         </li>
         <li>
-            <a class="dropdown-item" asp-action=@ViewData["action"] asp-controller="Movie" asp-route-sort="Revenue" asp-route-page=1>
+            <a class="dropdown-item" asp-action=@ViewData["action"] asp-route-order=@ViewData["order"]
+            asp-controller="Movie" asp-route-sort="Revenue" asp-route-page=1>
                 Revenue
             </a>
         </li>

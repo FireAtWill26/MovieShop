@@ -1,0 +1,47 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@* @model User *@
+<a class="nav-link text-dark btn" data-bs-toggle="modal" data-bs-target="#RegisterModal">Register</a>
+
+<div class="modal fade" id="RegisterModal" tabindex="-1" aria-labelledby="RegisterModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="RegisterModal">Register</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form asp-action="Register" asp-controller="Account" method="post">
+                    <div class="mb-3">
+                        <label for="FirstName" class="col-form-label">First Name</label>
+                        <input type="text" class="form-control" id="FirstName"  />
+                    </div>
+                    <div class="mb-3">
+                        <label for="LastName" class="col-form-label">LastName</label>
+                        <input type="text" class="form-control" id="LastName" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="BirthDate" class="col-form-label">Date of Birth</label>
+                        <input type="date" class="form-control" id="BirthDate" />
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="Email" class="col-form-label">Email</label>
+                        <input type="text" class="form-control" id="Email" />
+                    </div>
+                    <div class="mb-4">
+                        <label for="PassWord" class="col-form-label">Password:</label>
+                        <input type="password" class="form-control" id="Password" />
+                    </div>
+                    <div class="mb-2">
+                        <button type="button" class="btn btn-primary">Create Account</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
