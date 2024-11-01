@@ -2,6 +2,7 @@
 using ApplicationCore.Entities;
 using Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Infrastructure.Repository
@@ -83,4 +84,6 @@ namespace Infrastructure.Repository
         }
 
     }
+
+
 }

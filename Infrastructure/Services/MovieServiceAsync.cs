@@ -27,6 +27,11 @@ namespace Infrastructure.Services
             return await _repository.GetAllMovie(sort, page, count);
         }
 
+        public async Task<IEnumerable<Movie>> GetAll()
+        {
+            return await _repository.GetAll();
+        }
+
         public async Task<Movie> GetMovieById(int id)
         {
             return await _repository.GetMoviebyId(id);

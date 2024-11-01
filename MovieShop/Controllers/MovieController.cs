@@ -6,10 +6,19 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace MovieShop.Controllers
 {
+
     public class MovieController : Controller
     {
         private readonly IMovieServiceAsync _movieService;
         private readonly IGenreServiceAsync _genreService;
+
+        private Dictionary<string, Func<Movie,object>> sortMethod = new()
+        {
+            {"Id", new Func<Movie, object>(movie => movie.Id)},
+            {"ReleaseDate", new Func<Movie, object>(movie => movie.ReleaseDate)},
+            {"Title", new Func<Movie, string>(movie => movie.Title)},
+            {"Revenue", new Func<Movie, object?>(movie => movie.Revenue)},
+        };
 
         public MovieController(IMovieServiceAsync movieService, IGenreServiceAsync genreService)
         {
@@ -17,13 +26,22 @@ namespace MovieShop.Controllers
             _genreService = genreService;
         }
 
-        public async Task<IActionResult> Index(string sort="Id", int page=1)
+        public async Task<IActionResult> Index(string sort="Id", string order = "asc", int page=1)
         {
             ViewData["sort"] = sort;
             ViewData["page"] = page;
+            ViewData["order"] = order;
             ViewBag.Genre = await _genreService.GetAllGenre();
-            var result = await _movieService.GetAllMovie(sort, page, 64);
-            return View(result);
+            var result = await _movieService.GetAll();
+            if(order == "asc") 
+            { 
+                return View(result.OrderBy(sortMethod[sort]).Skip((page - 1) * 64).Take(64).ToList());             
+            }
+            else
+            {
+                return View(result.OrderByDescending(sortMethod[sort]).Skip((page - 1) * 64).Take(64).ToList());
+            }
+            
         }
 
         public async Task<IActionResult> Detail(int id)

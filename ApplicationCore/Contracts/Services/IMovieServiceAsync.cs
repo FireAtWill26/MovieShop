@@ -11,6 +11,8 @@ namespace ApplicationCore.Contracts.Services
 
         Task<IEnumerable<Movie>> GetAllMovie(string sort, int page, int count);
 
+        Task<IEnumerable<Movie>> GetAll();
+
         Task<Movie> GetMovieById(int id);
 
         Task<int> UpdateMovie(Movie movie, int id);

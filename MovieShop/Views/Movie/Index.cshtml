@@ -21,10 +21,40 @@
                         
                     </li>
                     <li>
-                        <a class="dropdown-item" asp-action="Index" asp-controller="Movie" asp-route-sort="Release_Date" asp-route-page=1>
+                        <a class="dropdown-item" asp-action="Index" asp-controller="Movie" asp-route-sort="ReleaseDate" asp-route-page=1>
                             Release Date
+                        </a>                        
+                    </li>
+                    <li>
+                        <a class="dropdown-item" asp-action="Index" asp-controller="Movie" asp-route-sort="Title" asp-route-page=1>
+                            Title
                         </a>
-                        
+                    </li>
+                    <li>
+                        <a class="dropdown-item" asp-action="Index" asp-controller="Movie" asp-route-sort="Revenue" asp-route-page=1>
+                            Revenue
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="dropdown">
+                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="OrderMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                    Order
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="OrderMenuLink">
+                    <li>
+                        <a class="dropdown-item" asp-action="Index" asp-controller="Movie" asp-route-sort=@ViewData["sort"] asp-route-order ="asc" asp-route-page=1>
+                            Ascending
+                        </a>
+
+                    </li>
+                    <li>
+                        <a class="dropdown-item" asp-action="Index" asp-controller="Movie" asp-route-sort=@ViewData["sort"] asp-route-order="desc" asp-route-page=1>
+                            Descending
+                        </a>
                     </li>
                 </ul>
             </div>
@@ -47,56 +77,80 @@
                 @if ((int)ViewData["page"] != 1){
                     <li class="page-item">
                         <a class="page-link" asp-action="Index" asp-controller="Movie"
-                           asp-route-page=@((int)ViewData["page"] - 1)
-                           asp-route-sort="@((string)ViewData["sort"])">Previous</a>
+                           asp-route-page=1 asp-route-order=@ViewData["order"]
+                           asp-route-sort="@((string)ViewData["sort"])">
+                            <i class="bi bi-chevron-double-left"></i>
+                        </a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" asp-action="Index" asp-controller="Movie"
+                           asp-route-page=@((int)ViewData["page"] - 1) asp-route-order=@ViewData["order"]
+                           asp-route-sort="@((string)ViewData["sort"])"><i class="bi bi-chevron-left"></i></a>
                     </li>
                     @if ((int)ViewData["page"] != 2)
                     {
                         <li class="page-item">
                             <a class="page-link" asp-action="Index" asp-controller="Movie"
-                               asp-route-page=@((int)ViewData["page"] - 2)
+                               asp-route-page=@((int)ViewData["page"] - 2) asp-route-order=@ViewData["order"]
                                asp-route-sort="@((string)ViewData["sort"])">@((int)ViewData["page"] - 2)</a>
                         </li>
                     }
                     <li class="page-item">
                         <a class="page-link" asp-action="Index" asp-controller="Movie"
-                           asp-route-page=@((int)ViewData["page"] - 1)
+                           asp-route-page=@((int)ViewData["page"] - 1) asp-route-order=@ViewData["order"]
                            asp-route-sort="@((string)ViewData["sort"])">@((int)ViewData["page"] - 1)</a>
                     </li>
 
                 }
+                else
+                {
+                    <li class="page-item disabled">
+                        <a class="page-link" asp-action="Index" asp-controller="Movie"
+                           asp-route-page=1 asp-route-order=@ViewData["order"]
+                           asp-route-sort="@((string)ViewData["sort"])">
+                            <i class="bi bi-chevron-double-left"></i>
+                        </a>
+                    </li>
+                    <li class="page-item disabled">
+                        <a class="page-link" asp-action="Index" asp-controller="Movie"
+                           asp-route-page=@((int)ViewData["page"] - 1) asp-route-order=@ViewData["order"]
+                           asp-route-sort="@((string)ViewData["sort"])"><i class="bi bi-chevron-left"></i></a>
+                    </li>
+                }
                 <li class="page-item active">
                     <a class="page-link" asp-action="Index" asp-controller="Movie"
-                    asp-route-page=@((int)ViewData["page"])
+                       asp-route-page=@((int)ViewData["page"]) asp-route-order=@ViewData["order"]
                     asp-route-sort="@((string)ViewData["sort"])">@((int)ViewData["page"])</a></li>
                 <li class="page-item">
                     <a class="page-link" asp-action="Index" asp-controller="Movie"
-                    asp-route-page=@((int)ViewData["page"] + 1)
+                       asp-route-page=@((int)ViewData["page"] + 1) asp-route-order=@ViewData["order"]
                     asp-route-sort="@((string)ViewData["sort"])">@((int)ViewData["page"] + 1)</a>
                 </li>
                 <li class="page-item">
                     <a class="page-link" asp-action="Index" asp-controller="Movie"
-                       asp-route-page=@((int)ViewData["page"] + 2)
+                       asp-route-page=@((int)ViewData["page"] + 2) asp-route-order=@ViewData["order"]
                        asp-route-sort="@((string)ViewData["sort"])">@((int)ViewData["page"] + 2)</a>
                 </li>
                 @if ((int)ViewData["page"] <= 2)
                 {
                     <li class="page-item">
                         <a class="page-link" asp-action="Index" asp-controller="Movie"
-                        asp-route-page=@((int)ViewData["page"] + 3)
+                           asp-route-page=@((int)ViewData["page"] + 3) asp-route-order=@ViewData["order"]
                         asp-route-sort="@((string)ViewData["sort"])">@((int)ViewData["page"] + 3)</a>
                     </li>
                     @if ((int)ViewData["page"] == 1)
                     {
                         <li class="page-item">
                             <a class="page-link" asp-action="Index" asp-controller="Movie"
-                               asp-route-page=@((int)ViewData["page"] + 4)
+                               asp-route-page=@((int)ViewData["page"] + 4) asp-route-order=@ViewData["order"]
                                asp-route-sort="@((string)ViewData["sort"])">@((int)ViewData["page"] + 4)</a>
                         </li>
                     }
                 }
                 <li class="page-item">
-                    <a class="page-link" asp-action="Index" asp-controller="Movie" asp-route-page=@((int)ViewData["page"] + 1) asp-route-sort="@((string)ViewData["sort"])">Next</a>
+                    <a class="page-link" asp-action="Index" asp-controller="Movie"
+                       asp-route-page=@((int)ViewData["page"] + 1) asp-route-order=@ViewData["order"]
+                    asp-route-sort="@((string)ViewData["sort"])"><i class="bi bi-chevron-right"></i></a>
                 </li>
             </ul>
         </nav>
