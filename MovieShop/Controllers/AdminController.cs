@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MovieShop.Utilities.CustomFilters;
 using Utilities.CustomFilters;
 
 namespace MovieShop.Controllers
@@ -17,7 +18,7 @@ namespace MovieShop.Controllers
             return View();
         }
 
-        [LogRequestFilter]
+        [TypeFilter<LogRequestFilter>]
         public IActionResult CreateMovie() 
         {
             return View();

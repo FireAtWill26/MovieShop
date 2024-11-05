@@ -2,7 +2,7 @@
 
 namespace Utilities.CustomFilters
 {
-    public class LogRequestFilter: ActionFilterAttribute, IAsyncActionFilter
+    public class LogRequestFilter: IAsyncActionFilter
     {
 
         public async Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
